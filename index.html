@@ -1,0 +1,455 @@
+<html>
+  <head>
+    <style>
+      .chaptercontainer {
+        margin:auto;
+        margin-top:5%;
+        max-width:95%;
+      }
+      .title {
+        margin-top:20px;
+        margin-left:20px;
+        margin-bottom:20px;
+      }
+      .titleheader {
+        margin-top:10px;
+        margin-left:10px;
+        margin-bottom:10px;
+      }
+      .subtitle {
+        color:black;
+      }
+      .secondcontainerchild {
+        margin:auto;
+        max-width:95%;
+        border: 1px solid red;
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+      }
+      .thirdcontainer {
+        cursor:pointer;
+        border-top-left-radius: 10px;
+        border-top-right-radius:10px;
+        border: 1px solid orangered;
+        color:black;
+        margin:auto;
+        margin-top:5%;
+        max-width:95%;
+      }
+      .thirdcontainerchild {
+        margin:auto;
+        max-width:95%;
+        min-height:100px;
+        border: 1px solid orangered;
+        border-top:none;
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+      }
+      .fourthcontainer {
+        cursor:pointer;
+        border-top-left-radius: 10px;
+        border-top-right-radius:10px;
+        border: 1px solid red;
+        color:black;
+        margin:auto;
+        margin-top:5%;
+        max-width:95%;
+      }
+      .fourthcontainerchild {
+        margin:auto;
+        max-width:95%;
+        min-height:100px;
+        border: 1px solid red;
+        border-top:none;
+        border-bottom-left-radius:10px;
+        border-bottom-right-radius:10px;
+      }
+      .thirdcontainerselectedleft {
+        border-top-left-radius:10px;
+        background-color: orangered;
+        color:white;
+      }
+      .thirdcontainerselectedright {
+        border-top-right-radius:10px;
+        background-color: orangered;
+        color:white;
+      }
+      .thirdcontainerselected {
+        background-color: orangered;
+        color:white;
+      }
+      .fourthcontainerselectedleft {
+        border-top-left-radius:10px;
+        background-color: red;
+        color:white;
+      }
+      .fourthcontainerselectedright {
+        border-top-right-radius:10px;
+        background-color: red;
+        color:white;
+      }
+      .fourthcontainerselected {
+        background-color: ored;
+        color:white;
+      }
+      .secondcontainer {
+        border-top-left-radius: 10px;
+        border-top-right-radius:10px;
+        padding:10px;
+        background-color:red;
+        color:white;
+        margin:auto;
+        margin-top:5%;
+        max-width:95%;
+      }
+      .pageend {
+        margin-bottom:150px;
+      }
+      .fifthcontainer {
+        border:1px solid red;
+        border-top-left-radius: 10px;
+        border-top-right-radius:10px;
+        border-bottom:none;
+        padding:10px;
+        background-color:white;
+        color:red;
+        margin:auto;
+        margin-top:5%;
+        max-width:95%;
+      }
+      .textcenter {
+        text-align:center;
+      }
+      .colclasses {
+        cursor:pointer;
+        padding:10px;
+        border:1px solid black;
+        border-right:none;
+      }
+      .fontawesomeclasses1 {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius:10px;
+        cursor:pointer;
+        text-align:center;
+        padding:13px;
+        border: 1px solid black;
+        border-right: none;
+      }
+      .fontawesomeclasses2 {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius:10px;
+        cursor:pointer;
+        text-align:center;
+        padding:13px;
+        border: 1px solid black
+      }
+      .selected {
+        text-align:center;
+        border-bottom:5px solid red;
+      }
+      .bold{
+        text-decoration: bold;
+      }
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  </head>
+  <body>
+    <div v-show="bool.show" id = 'app'>
+      <div class='container-fluid chaptercontainer'>
+        <div class='row'>
+          <div v-on:click="changeChapters('Previous')" type='div' class = 'fontawesomeclasses1 col-2'>
+            <i class='fa fa-arrow-left'></i>
+          </div>
+          <div type='div' :disabled = "bool.first" class='colclasses col-2 selected'>
+            <span class ='textcenter'>{{displayedchapters[0]}}</span>
+          </div>
+          <div v-on:click="changeChapters('Second')" type='div' class='colclasses col-2'>
+            <div class ='textcenter'>{{displayedchapters[1]}}</div>
+          </div>
+          <div v-on:click="changeChapters('Third')" type='div' class='colclasses col-2'>
+            <div class ='textcenter'>{{displayedchapters[2]}}</div>
+          </div>
+          <div v-on:click="changeChapters('Fourth')" type='div'  class='colclasses col-2'>
+            <div class ='textcenter'>{{displayedchapters[3]}}</div>
+          </div>
+          <div v-on:click="changeChapters('Next')" type='div' class = 'fontawesomeclasses2 col-2'>
+            <i class='fa fa-arrow-right'></i>
+          </div>
+        </div>
+      </div>
+      <div class='container secondcontainer'>
+        <div class='row'>
+          <div class='titleheader col-12'>
+            <h4>Que Voy a Aprender</h4>
+          </div>
+        </div>
+      </div>
+      <div class='container secondcontainerchild'>
+        <div class='row'>
+          <div class='col-6 row'>
+            <div class='col-12'>
+              <h4 class='title'><b>Gramatica</b></h4>
+            </div>
+            <div class='col-12'>
+              <span></span>
+            </div>
+          </div>
+          <div class='col-6 row'>
+            <div class='col-12'>
+              <h4 class='title'><b>Lexico</b></h4>
+            </div>
+            <div class='col-12'>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='container thirdcontainer'>
+        <div class='row'>
+          <div v-on:click='switchTabs("left")' v-bind:class='selectedLeft' class='col-4'>
+            <div class='titleheader textcenter'>Gramatica</div>
+          </div>
+          <div v-on:click='switchTabs("center")' v-bind:class='selectedCenter' class='col-4'>
+            <div class='titleheader textcenter'>Lexico</div>
+          </div>
+          <div v-on:click='switchTabs("right")' v-bind:class='selectedRight' class='col-4'>
+            <div class='titleheader textcenter'>Vocabulario</div>
+          </div>
+        </div>
+      </div>
+      <div class='container thirdcontainerchild'>
+        {{displayedcontent}}
+      </div>
+      <div class='container fourthcontainer'>
+        <div class='row'>
+          <div v-on:click='switchTabsSecond("left")' v-bind:class='selectedLeftSecond' class='col-3'>
+            <div class='titleheader textcenter'>Activity</div>
+          </div>
+          <div v-on:click='switchTabsSecond("center")' v-bind:class='selectedCenterSecond' class='col-3'>
+            <div class='titleheader textcenter'>More Info</div>
+          </div>
+          <div v-on:click='switchTabsSecond("middle")' v-bind:class='selectedMiddleSecond' class='col-3'>
+            <div class='titleheader textcenter'>Solutions</div>
+          </div>
+          <div v-on:click='switchTabsSecond("right")' v-bind:class='selectedRightSecond' class='col-3'>
+            <div class='titleheader textcenter'>Teacher Resources</div>
+          </div>
+        </div>
+      </div>
+      <div class='container fourthcontainerchild'>
+        {{displayedcontent2}}
+      </div>
+      <div class='container secondcontainer'>
+        <div class='row'>
+          <div class='titleheader col-12'>
+            <h4>Activities Objectives</h4>
+          </div>
+        </div>
+      </div>
+      <div class='container secondcontainerchild'>
+        <div class='row'>
+          <div class='col-12 row'>
+            <div class='col-12'>
+              <h4 class='title'><b>Gramatica</b></h4>
+            </div>
+            <div class='col-12'>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='container fifthcontainer'>
+        <div class='row'>
+          <div class='col-12'>
+            <h4>Elementos de geografia</h4>
+          </div>
+          <div class='col-12'>
+            <span class='subtitle'>This is subtitle test text</span>
+          </div>
+        </div>
+      </div>
+      <div class='pageend container secondcontainerchild'>
+        <div class='row'>
+          <div class='col-12 row'>
+            <div class='col-12'>
+              <h4 class='title'><b>Gramatica</b></h4>
+            </div>
+            <div class='col-12'>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          bool: {
+            show: false
+          },
+          first: '',
+          selectedchapter: 'Chapter 1',
+          index: 0,
+          thirdcontainerselected: 'left',
+          fourthcontainerselected: 'left',
+          chapters: ['Chapter 1','Chapter 2'],
+          displayedchapters: [],
+          content: [
+            {chaptercontent: {
+              content: {
+                left: 'This is example text',
+                center: 'This is more example text',
+                right: 'This is even more example text'
+              },
+              content2: {
+                left: '<iframe src="/Users/nick/Downloads/lo_example (1) 2/cmps_sur_iexe_u01_01/index.html"></iframe>',
+                center: 'This is masdfore example text',
+                middle: 'this is sasdfome more testing ',
+                right: 'This is evasdfen more example text'
+              }
+            }},
+            {chaptercontent: {
+              content: {
+                left: 'This is exasgsadgaample text',
+                center: 'This isasdfasdfasd more example text',
+                right: 'This is asdfasdfasdfasdfeven more example text'
+              },
+              content2: {
+                left: 'This isasdasdfasdfasdfasdf example text',
+                center: 'This is asdfasdfasdfasdfmasdfore example text',
+                middle: 'this iasdfasdfas;dlfajksdf;kj sasdfome more testing ',
+                right: 'This isasdfa;sdjklfalkfwoiefa;ohv evasdfen more example text'
+              }
+            }},
+          ],
+          displayedcontent: '',
+          displayedcontent2: '',
+        },
+        mounted: function () {
+          this.getChapters()
+          
+          this.displayedcontent = this.content[this.index].chaptercontent.content.left
+          this.displayedcontent2 = this.content[this.index].chaptercontent.content2.left
+          this.bool.show = true
+        },
+        computed: {
+          
+          selected: function () {
+            return {selected: true}
+          },
+          chapterCheck: function () {
+            if (this.displayedchapters[1] !== '') {
+              return true   
+            }
+          },
+          selectedLeftSecond: function () {
+            return {fourthcontainerselectedleft: this.fourthcontainerselected === 'left'}
+          },
+          selectedCenterSecond: function () {
+            return {thirdcontainerselected: this.fourthcontainerselected === 'center'}
+          },
+          selectedMiddleSecond: function () {
+            return {thirdcontainerselected: this.fourthcontainerselected === 'middle'}
+          },
+          selectedRightSecond: function () {
+            return {thirdcontainerselectedright: this.fourthcontainerselected === 'right'}
+          },
+          selectedLeft: function () {
+            return {thirdcontainerselectedleft: this.thirdcontainerselected === 'left'}
+          },
+          selectedCenter: function () {
+            return {thirdcontainerselected: this.thirdcontainerselected === 'center'}
+          },
+          selectedRight: function () {
+            return {thirdcontainerselectedright: this.thirdcontainerselected === 'right'}
+          }
+        },
+        methods: {
+          switchTabs: function (x) {
+            this.thirdcontainerselected = x
+            this.changeContent(x)
+          },
+          switchTabsSecond: function (x) {
+            this.fourthcontainerselected = x
+            this.changeContent2(x)
+          },
+          changeContent: function (x) {
+            if (x === 'left') this.displayedcontent = this.content[this.index].chaptercontent.content.left
+            else if (x === 'center') this.displayedcontent = this.content[this.index].chaptercontent.content.center
+            else this.displayedcontent = this.content[this.index].chaptercontent.content.right
+            console.log(this.displayedcontent)
+          },
+          changeContent2: function (x) {
+            if (x === 'left') this.displayedcontent2 = this.content[this.index].chaptercontent.content2.left
+            else if (x === 'center') this.displayedcontent2 = this.content[this.index].chaptercontent.content2.center
+            else if (x === 'middle') this.displayedcontent2 = this.content[this.index].chaptercontent.content2.middle
+            else this.displayedcontent2 = this.content[this.index].chaptercontent.content2.right
+            console.log(this.displayedcontent2)
+          },
+          changeChapters: function (x) {
+            if (x === 'Previous') {
+              if (this.index > 0) {
+                this.selectedchapter = this.chapters[this.index-1]
+                this.getChapters()
+              }
+            } else if (x === 'First') {
+              check = this.index
+              if (check < this.chapters.length) {
+                this.selectedchapter = this.chapters[this.index]
+                this.getChapters()
+              } 
+            } else if (x === 'Second') {
+              check = this.index +1
+              if (check < this.chapters.length ) {
+                this.selectedchapter = this.chapters[this.index + 1]
+                this.getChapters()
+              }
+            } else if (x === 'Third') {
+              check = this.index +2
+              if (check < this.chapters.length ) {
+                this.selectedchapter = this.chapters[this.index + 2]
+                this.getChapters()
+              }
+            } else if (x === 'Fourth') {
+              check = this.index +3
+              if (check < this.chapters.length) {
+                this.selectedchapter = this.chapters[this.index + 3]
+                this.getChapters()
+              }
+            } else {
+              check = this.index +1
+              if (check < this.chapters.length) {
+                this.selectedchapter = this.chapters[this.index+1]
+                this.getChapters()  
+              }
+            }
+          },
+          getChapters: function () {
+            var bool = false
+            var arr = []
+            for(var i = 0; i < this.chapters.length; i++) {
+              if (this.chapters[i] === this.selectedchapter && bool === false) {
+                this.index = i
+              }
+              if (this.chapters[i] === this.selectedchapter || bool === true) {
+                bool = true
+                arr.push(this.chapters[i])
+                if (arr.length === 4) break
+              }
+            }   
+            this.displayedchapters = arr
+            this.displayedcontent = this.content[this.index].chaptercontent.content.left
+            this.displayedcontent2 = this.content[this.index].chaptercontent.content.left
+            this.thirdcontainerselected = 'left'
+            this.fourthcontainerselected = 'left'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
