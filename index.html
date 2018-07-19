@@ -137,7 +137,7 @@
       }
       .colclasses {
         cursor:pointer;
-        padding:10px;
+        padding:15px;
         border:1px solid black;
         border-right:none;
       }
@@ -180,22 +180,23 @@
     <div v-show="bool.show" id = 'app'>
       <div class='container-fluid chaptercontainer'>
         <div class='row'>
-          <div v-on:click="changeChapters('Previous')" type='div' class = 'fontawesomeclasses1 col-2'>
+          <div v-on:click="changeChapters('Previous')" type='div' class = 'fontawesomeclasses1 col-1'>
             <i class='fa fa-arrow-left'></i>
           </div>
-          <div type='div' :disabled = "bool.first" class='colclasses col-2 selected'>
-            <span class ='textcenter'>{{displayedchapters[0]}}</span>
+          <div class='col-10'>
+            <div style = 'height:auto;'class='row'>
+              <div type='div' :disabled = "bool.first" class='colclasses col-4 selected'>
+                <span class ='textcenter'>{{displayedchapters[0]}}</span>
+              </div>
+              <div v-on:click="changeChapters('Second')" type='div' class='colclasses col-4'>
+                <div class ='textcenter'>{{displayedchapters[1]}}</div>
+              </div>
+              <div v-on:click="changeChapters('Third')" type='div' class='colclasses col-4'>
+                <div class ='textcenter'>{{displayedchapters[2]}}</div>
+              </div>
+            </div>
           </div>
-          <div v-on:click="changeChapters('Second')" type='div' class='colclasses col-2'>
-            <div class ='textcenter'>{{displayedchapters[1]}}</div>
-          </div>
-          <div v-on:click="changeChapters('Third')" type='div' class='colclasses col-2'>
-            <div class ='textcenter'>{{displayedchapters[2]}}</div>
-          </div>
-          <div v-on:click="changeChapters('Fourth')" type='div'  class='colclasses col-2'>
-            <div class ='textcenter'>{{displayedchapters[3]}}</div>
-          </div>
-          <div v-on:click="changeChapters('Next')" type='div' class = 'fontawesomeclasses2 col-2'>
+          <div v-on:click="changeChapters('Next')" type='div' class = 'fontawesomeclasses2 col-1'>
             <i class='fa fa-arrow-right'></i>
           </div>
         </div>
@@ -209,7 +210,7 @@
       </div>
       <div class='container-fluid secondcontainerchild'>
         <div class='row'>
-          <div class='col-6 row'>
+          <div class='col-4 row'>
             <div class='col-12'>
               <h4 class='title'><b>Gramatica</b></h4>
             </div>
@@ -217,7 +218,7 @@
               <span></span>
             </div>
           </div>
-          <div class='col-6 row'>
+          <div class='col-4 row'>
             <div class='col-12'>
               <h4 class='title'><b>Lexico</b></h4>
             </div>
@@ -225,6 +226,14 @@
               <span></span>
             </div>
           </div>
+          <div class='col-4 row'>
+              <div class='col-12'>
+                <h4 class='title'><b>Discourse</b></h4>
+              </div>
+              <div class='col-12'>
+                <span></span>
+              </div>
+            </div>
         </div>
       </div>
       <div class='container-fluid thirdcontainer'>
@@ -314,11 +323,11 @@
             show: false
           },
           first: '',
-          selectedchapter: 'Chapter 1',
+          selectedchapter: 'Actividad 1',
           index: 0,
           thirdcontainerselected: 'left',
           fourthcontainerselected: 'left',
-          chapters: ['Chapter 1','Chapter 2'],
+          chapters: ['Actividad 1','Actividad 2','Actividad 3','Actividad 4'],
           displayedchapters: [],
           content: [
             {chaptercontent: {
